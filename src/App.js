@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import NavBar from './components/NavBar.js'
+import MainContent from './components/MainContent.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css'
+
+class App extends Component {
+
+  state = {
+    darkMode: true
+  }
+
+  toggleDarkMode = () => {
+    this.setState({ darkMode: !this.state.darkMode })
+  }
+
+  render () {
+
+    const { darkMode } = this.state
+
+    const style = {
+      backgroundColor: darkMode && 'rgb(69, 69, 69)'
+    }
+
+    return (
+      <div className="App"
+           style={ style }>
+        <NavBar toggleDarkMode={ this.toggleDarkMode }/>
+        <MainContent darkMode={ darkMode } />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
+

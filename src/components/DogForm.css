@@ -1,0 +1,29 @@
+.DogForm legend {
+  background-color: grey;
+  color: oldlace;
+  padding: 4px;
+}
+
+.DogForm div {
+  margin: 10px;
+  border: 0;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.DogForm div > * {
+  flex: 1;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.DogForm button {
+  border-radius: 4px;
+  border: 0;
+}
+
+.DogForm button:hover {
+  cursor: pointer;
+  transition: background-color 0.2s linear;
+}

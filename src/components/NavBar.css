@@ -1,0 +1,27 @@
+.NavBar {
+  background-color: black;
+}
+
+.NavBar li {
+  list-style: none;
+  display: inline-block;
+  margin: 5px 20px;
+  color: oldlace;
+}
+
+.NavBar button {
+  background-color: black;
+  border: 1px solid white;
+  padding: 4px 10px;
+  color: white;
+  border-radius: 4px;
+}
+
+.NavBar button:hover {
+  background-color: darkslategrey;
+  cursor: pointer;
+  transition: background-color 0.2s linear;
+} 
+
+
+
