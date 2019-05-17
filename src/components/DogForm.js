@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
 import axios from 'axios'
+import { connect } from 'react-redux'
 import './DogForm.css'
 
-export default class DogForm extends Component {
+class DogForm extends Component {
 
   state = {
     numDogs: 1
@@ -21,7 +22,10 @@ export default class DogForm extends Component {
 
     Promise.all(emptyArray.map(() => this.getDogs()))
       .then(data => data.map(res => res.data.message))
-      .then(this.props.updateDogData)
+      .then(dogData => this.props.dispatch({
+        type: 'UPDATE_DOG_DATA',
+        payload: { dogData }
+      }))
       .catch(console.error)
   }
 
@@ -68,3 +72,9 @@ export default class DogForm extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  darkMode: state.darkMode
+})
+
+export default connect(mapStateToProps)(DogForm)

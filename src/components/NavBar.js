@@ -1,8 +1,12 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
 import './NavBar.css'
 
 const NavBar = props => {
+
+  const handleToggleClick = () => props.dispatch({ type: 'TOGGLE_DARK_MODE'})
+  
   return (
     <nav className="NavBar">
       <ul>
@@ -10,7 +14,7 @@ const NavBar = props => {
         <li>About</li>
         <li>Contact</li>
         <li>
-          <button onClick={ props.toggleDarkMode }>toggle theme</button>
+          <button onClick={ handleToggleClick }>toggle theme</button>
         </li>
       </ul>
 
@@ -18,4 +22,4 @@ const NavBar = props => {
   )
 }
 
-export default NavBar
+export default connect()(NavBar)

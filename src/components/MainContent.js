@@ -2,21 +2,17 @@ import React, { Component } from 'react'
 import DogForm from './DogForm.js'
 import DogImage from './DogImage.js'
 
+import { connect } from 'react-redux'
+
 import './MainContent.css'
 
-export default class MainContent extends Component {
-
-  state = {
-    dogData: []
-  }
-
-  updateDogData = dogData => this.setState({ dogData })
+class MainContent extends Component {
 
   render() {
 
-    const { darkMode } = this.props
+    const { darkMode, dogData } = this.props
 
-    const DogImages = this.state.dogData.map((src, index) => (
+    const DogImages = dogData.map((src, index) => (
       <DogImage src={ src } key={ index } />
     ))
 
@@ -29,11 +25,17 @@ export default class MainContent extends Component {
       <div className="MainContent"
            style={ style }>
         <p>lorem ipsum</p>
-        <DogForm darkMode={ darkMode }
-                 updateDogData={ this.updateDogData } />
+        <DogForm />
         { DogImages }
       </div>
     )
   }
 
 }
+
+const mapStateToProps = state => ({
+  darkMode: state.darkMode,
+  dogData: state.dogData
+})
+
+export default connect(mapStateToProps)(MainContent)
